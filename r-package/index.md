@@ -1,9 +1,9 @@
 # corinet
 
-**corinet** provides a lightweight pipeline for building and analyzing gene
-co-expression networks from bulk RNA-seq data. Starting from a
-`SummarizedExperiment` object, the package supports the full workflow
-from data preparation through network construction, module detection,
+*corinet* provides a lightweight pipeline for building **COR**relation **NET**works
+to analyze gene co-expression in bulk RNA-seq data. Starting from a
+`SummarizedExperiment` object, the package supports the full workflow from
+data preparation through network construction, module detection,
 visualization, and export.
 
 ## Features
