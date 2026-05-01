@@ -13,6 +13,7 @@ Let’s see what the complete pipeline looks like…
 ## Installation
 
 ``` r
+
 # Install from GitHub
 devtools::install_github("lmuir16/corinet")
 ```
@@ -24,9 +25,8 @@ GTEx skeletal muscle bulk RNA-seq data for 2000 genes across 200
 samples.
 
 ``` r
+
 library(corinet)
-#> Warning: replacing previous import 'S4Arrays::makeNindexFromArrayViewport' by
-#> 'DelayedArray::makeNindexFromArrayViewport' when loading 'SummarizedExperiment'
 
 data(example_se)
 example_se
@@ -48,6 +48,7 @@ keeps pairwise correlation computation tractable and focuses the network
 on biologically informative signal.
 
 ``` r
+
 # Select top 500 most variable genes
 se_top <- top_variable_features(example_se, n = 500)
 
@@ -83,6 +84,7 @@ genes matrix where each entry reflects the co-expression strength
 between two genes.
 
 ``` r
+
 cor_mat <- pairwise_corr(mat, cor_method = "pearson")
 
 dim(cor_mat)
@@ -106,6 +108,7 @@ dense uninformative one. A threshold of 0.7 is a common starting point
 for bulk RNA-seq co-expression networks.
 
 ``` r
+
 adj_mat <- build_adjacency_mat(cor_mat, cor_threshold = 0.7)
 
 # Proportion of possible edges retained
@@ -126,6 +129,7 @@ igraph object and computes per-gene degree and betweenness centrality.
   between co-expression modules.
 
 ``` r
+
 net <- build_network(adj_mat)
 
 # Preview degree distribution
@@ -142,6 +146,7 @@ detection, which optimizes modularity — a measure of how well-separated
 the modules are.
 
 ``` r
+
 gene_mods <- detect_network_modules(net, community_method = "louvain")
 #> Modularity: 0.617
 #> Modules found: 161
@@ -172,6 +177,7 @@ data frame of global network statistics, including total edge count,
 mean degree, hub gene count, and modularity.
 
 ``` r
+
 net_summary <- summarize_network(net, gene_mods$modules, gene_mods$modularity)
 #>          metric     value
 #> 1       n_genes  500.0000
@@ -190,6 +196,7 @@ correspond to master regulators or genes central to the biological
 processes captured by the co-expression structure.
 
 ``` r
+
 hub_genes <- get_hub_genes(net, modules = gene_mods$modules, n = 20)
 head(hub_genes)
 #>              gene degree betweenness module
@@ -210,6 +217,7 @@ hierarchical clustering, revealing block structure that corresponds to
 co-expression modules.
 
 ``` r
+
 plot_corr_map(cor_mat, cor_method = "pearson")
 ```
 
@@ -221,6 +229,7 @@ The network plot shows the top hub genes as nodes sized by degree and
 colored by module, with the top 20 hub genes labeled by gene symbol.
 
 ``` r
+
 plot_network(net,
              modules        = gene_mods$modules,
              n_top          = 80,
@@ -234,6 +243,7 @@ Note that the number of labeled hub genes can be controlled with
 `n_label` to reduce overlap in dense networks:
 
 ``` r
+
 # Reduce label density for cleaner visualization
 plot_network(net,
              modules          = gene_mods$modules,
@@ -249,6 +259,7 @@ All results can be exported to TSV files for downstream analysis or
 reporting. Six files are written to a temporary directory by default.
 
 ``` r
+
 exported_files <- net_export(
   cor_mat,
   net,
@@ -279,6 +290,7 @@ For non-interactive use, corinet provides a CLI via Rapp. After
 installing the package, install the CLI with:
 
 ``` r
+
 Rapp::install_pkg_cli_apps("corinet")
 ```
 
@@ -308,6 +320,7 @@ And that’s that!
 ## Session Info
 
 ``` r
+
 sessionInfo()
 #> R version 4.6.0 (2026-04-24)
 #> Platform: x86_64-pc-linux-gnu
@@ -333,43 +346,43 @@ sessionInfo()
 #> [1] corinet_0.1.0
 #> 
 #> loaded via a namespace (and not attached):
-#>  [1] SummarizedExperiment_1.41.1 gtable_0.3.6               
+#>  [1] SummarizedExperiment_1.42.0 gtable_0.3.6               
 #>  [3] circlize_0.4.18             shape_1.4.6.1              
 #>  [5] rjson_0.2.23                xfun_0.57                  
 #>  [7] bslib_0.10.0                ggplot2_4.0.3              
-#>  [9] GlobalOptions_0.1.4         Biobase_2.71.0             
+#>  [9] GlobalOptions_0.1.4         Biobase_2.72.0             
 #> [11] lattice_0.22-9              vctrs_0.7.3                
 #> [13] tools_4.6.0                 generics_0.1.4             
 #> [15] stats4_4.6.0                parallel_4.6.0             
 #> [17] tibble_3.3.1                cluster_2.1.8.2            
 #> [19] pkgconfig_2.0.3             Matrix_1.7-5               
 #> [21] RColorBrewer_1.1-3          S7_0.2.2                   
-#> [23] desc_1.4.3                  S4Vectors_0.49.3           
+#> [23] desc_1.4.3                  S4Vectors_0.50.0           
 #> [25] lifecycle_1.0.5             compiler_4.6.0             
 #> [27] farver_2.1.2                textshaping_1.0.5          
-#> [29] Seqinfo_1.1.0               codetools_0.2-20           
-#> [31] ComplexHeatmap_2.27.1       clue_0.3-68                
+#> [29] Seqinfo_1.2.0               codetools_0.2-20           
+#> [31] ComplexHeatmap_2.28.0       clue_0.3-68                
 #> [33] htmltools_0.5.9             sass_0.4.10                
 #> [35] yaml_2.3.12                 pkgdown_2.2.0              
 #> [37] pillar_1.11.1               crayon_1.5.3               
 #> [39] jquerylib_0.1.4             cachem_1.1.0               
-#> [41] DelayedArray_0.37.1         iterators_1.0.14           
+#> [41] DelayedArray_0.38.0         iterators_1.0.14           
 #> [43] abind_1.4-8                 foreach_1.5.2              
 #> [45] tidyselect_1.2.1            digest_0.6.39              
 #> [47] dplyr_1.2.1                 labeling_0.4.3             
 #> [49] fastmap_1.2.0               grid_4.6.0                 
 #> [51] colorspace_2.1-2            cli_3.6.6                  
-#> [53] SparseArray_1.11.13         magrittr_2.0.5             
-#> [55] S4Arrays_1.11.1             withr_3.0.2                
+#> [53] SparseArray_1.12.0          magrittr_2.0.5             
+#> [55] S4Arrays_1.12.0             withr_3.0.2                
 #> [57] scales_1.4.0                rmarkdown_2.31             
-#> [59] XVector_0.51.0              matrixStats_1.5.0          
+#> [59] XVector_0.52.0              matrixStats_1.5.0          
 #> [61] igraph_2.3.0                ragg_1.5.2                 
 #> [63] png_0.1-9                   GetoptLong_1.1.1           
 #> [65] evaluate_1.0.5              knitr_1.51                 
-#> [67] GenomicRanges_1.63.2        IRanges_2.45.0             
+#> [67] GenomicRanges_1.64.0        IRanges_2.46.0             
 #> [69] doParallel_1.0.17           rlang_1.2.0                
-#> [71] glue_1.8.1                  BiocGenerics_0.57.1        
+#> [71] glue_1.8.1                  BiocGenerics_0.58.0        
 #> [73] jsonlite_2.0.0              R6_2.6.1                   
-#> [75] MatrixGenerics_1.23.0       systemfonts_1.3.2          
+#> [75] MatrixGenerics_1.24.0       systemfonts_1.3.2          
 #> [77] fs_2.1.0
 ```

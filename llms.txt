@@ -1,10 +1,10 @@
 # corinet
 
-**corinet** provides a lightweight pipeline for building and analyzing
-gene co-expression networks from bulk RNA-seq data. Starting from a
-`SummarizedExperiment` object, the package supports the full workflow
-from data preparation through network construction, module detection,
-visualization, and export.
+*corinet* provides a lightweight pipeline for building **COR**relation
+**NET**works to analyze gene co-expression in bulk RNA-seq data.
+Starting from a `SummarizedExperiment` object, the package supports the
+full workflow from data preparation through network construction, module
+detection, visualization, and export.
 
 ## Features
 
@@ -18,6 +18,7 @@ visualization, and export.
 ## Installation
 
 ``` r
+
 if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 BiocManager::install(c("SummarizedExperiment", "recount3"))
@@ -31,6 +32,7 @@ corinet includes a CLI via [Rapp](https://github.com/pawelru/Rapp) for
 non-interactive use. Install after installing the package:
 
 ``` r
+
 Rapp::install_pkg_cli_apps("corinet")
 ```
 
