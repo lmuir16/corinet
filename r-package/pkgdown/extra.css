@@ -8,6 +8,17 @@ main {
   padding-top: 2rem;
 }
 
+/* Align logo and title on home page */
+.navbar-brand img {
+  vertical-align: middle;
+}
+
+.template-home h1 {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 /* Uppercase Articles dropdown to match other navbar items */
 .navbar .dropdown-toggle {
   text-transform: uppercase;
