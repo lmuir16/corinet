@@ -1,8 +1,0 @@
-metric	value
-n_genes	50
-n_edges	99
-mean_degree	3.96
-median_degree	2
-n_hubs_deg20	0
-n_modules	21
-modularity	0.4916
