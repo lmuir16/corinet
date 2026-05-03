@@ -27,6 +27,8 @@ samples.
 ``` r
 
 library(corinet)
+#> Warning: replacing previous import 'S4Arrays::makeNindexFromArrayViewport' by
+#> 'DelayedArray::makeNindexFromArrayViewport' when loading 'SummarizedExperiment'
 
 data(example_se)
 example_se
@@ -366,13 +368,13 @@ sessionInfo()
 #> [35] yaml_2.3.12                 pkgdown_2.2.0              
 #> [37] pillar_1.11.1               crayon_1.5.3               
 #> [39] jquerylib_0.1.4             cachem_1.1.0               
-#> [41] DelayedArray_0.38.0         iterators_1.0.14           
+#> [41] DelayedArray_0.38.1         iterators_1.0.14           
 #> [43] abind_1.4-8                 foreach_1.5.2              
 #> [45] tidyselect_1.2.1            digest_0.6.39              
 #> [47] dplyr_1.2.1                 labeling_0.4.3             
 #> [49] fastmap_1.2.0               grid_4.6.0                 
 #> [51] colorspace_2.1-2            cli_3.6.6                  
-#> [53] SparseArray_1.12.0          magrittr_2.0.5             
+#> [53] SparseArray_1.12.2          magrittr_2.0.5             
 #> [55] S4Arrays_1.12.0             withr_3.0.2                
 #> [57] scales_1.4.0                rmarkdown_2.31             
 #> [59] XVector_0.52.0              matrixStats_1.5.0          
