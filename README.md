@@ -19,7 +19,6 @@ corinet/
 ├── r-package/    # R package source
 └── nextflow/     # Nextflow pipeline for large-scale analysis
 └── results/      # Final output files from example Nextflow run
-└── work/         # Intermediate Nextflow process files from example run
 ```
 Both the `r-package`  and `nextflow` subdirectories contain their own dedicated README files. 
 
